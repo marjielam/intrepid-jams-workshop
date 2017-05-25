@@ -2,6 +2,7 @@ source "https://rubygems.org"
 
 ruby "2.4.0"
 
+gem "active_model_serializers", "0.8.3"
 gem "autoprefixer-rails"
 gem "delayed_job_active_record"
 gem "flutie"

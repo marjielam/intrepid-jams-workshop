@@ -1,4 +1,7 @@
 FactoryGirl.define do
+  factory :player do
+    
+  end
   factory :team do
     name "MyString"
     player_names "MyString"

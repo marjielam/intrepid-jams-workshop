@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170525212155) do
+ActiveRecord::Schema.define(version: 20170525213131) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "competing_teams", force: :cascade do |t|
+    t.integer  "game_id"
+    t.integer  "team_id"
+    t.integer  "score"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_competing_teams_on_game_id", using: :btree
+    t.index ["team_id"], name: "index_competing_teams_on_team_id", using: :btree
+  end
 
   create_table "games", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -30,12 +40,10 @@ ActiveRecord::Schema.define(version: 20170525212155) do
 
   create_table "teams", force: :cascade do |t|
     t.string   "name"
-    t.integer  "score"
-    t.integer  "game_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["game_id"], name: "index_teams_on_game_id", using: :btree
   end
 
-  add_foreign_key "teams", "games"
+  add_foreign_key "competing_teams", "games"
+  add_foreign_key "competing_teams", "teams"
 end

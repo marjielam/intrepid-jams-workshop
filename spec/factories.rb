@@ -1,4 +1,7 @@
 FactoryGirl.define do
+  factory :competing_team do
+    
+  end
   factory :player do
     
   end

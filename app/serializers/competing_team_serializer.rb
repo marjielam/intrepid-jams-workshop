@@ -1,4 +1,10 @@
 class CompetingTeamSerializer < ActiveModel::Serializer
-  attributes :team, :score
-  has_one :team, embed: :objects
+  embed :ids
+
+  attributes :team_id, :score, :name
+  has_one :team
+
+  def name
+    "#{team.name}"
+  end
 end
